@@ -1,0 +1,23 @@
+[tools]
+python = "3.12"
+uv = "0.10.5"
+
+[tasks.init]
+description = "Initialize the environment"
+run = "uv sync"
+
+[tasks."libpy:start"]
+description = "Run the poc with the python library"
+run = "sudo uv run python -m gear360.connect_libpy"
+
+[tasks."libwsm:start"]
+description = "Run the poc with the wsm library"
+run = "sudo uv run python -m gear360.connect_libwsm"
+
+[tasks."ndi:camera:start"]
+description = "Run the ndi camera stream server"
+run = "uv run python -m gear360.ndi_camera_stream http://192.168.107.1:7679/livestream_high.avi"
+
+[tasks."ndi:test:start"]
+description = "Run the ndi test stream server"
+run = "uv run python -m gear360.ndi_test_stream"
