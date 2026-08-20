@@ -1,0 +1,11 @@
+[package]
+name = "macos-bluetooth-poc"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+base64 = "0.22"
+objc2 = "0.6.4"
+objc2-core-foundation = { version = "0.3.2", features = ["CFRunLoop"] }
+objc2-foundation = { version = "0.3.2", features = ["NSArray", "NSString", "NSEnumerator", "NSData", "NSDictionary", "NSValue", "NSPropertyList", "NSError", "NSObject"] }
+objc2-io-bluetooth = "0.3.2"
