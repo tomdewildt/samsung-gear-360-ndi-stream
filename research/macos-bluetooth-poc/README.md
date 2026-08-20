@@ -21,7 +21,7 @@ So the camera's required connect-back cannot be hosted on modern macOS.
 # How To Run
 
 Prerequisites:
-* mise version ```[TODO]``` or later
+* mise version ```2026.8.10``` or later
 * rust version ```1.97.0``` or later
 * macOS with the Gear 360 paired over Bluetooth
 

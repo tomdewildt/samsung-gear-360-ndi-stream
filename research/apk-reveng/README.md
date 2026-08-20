@@ -5,9 +5,9 @@ Downloads and decompiles the two Samsung Android apps the Gear 360 protocol was 
 # How To Run
 
 Prerequisites:
-* bash version ```[TODO]``` or later
-* curl version ```[TODO]``` or later
-* unzip version ```[TODO]``` or later
+* bash version ```5.2.37``` or later
+* curl version ```8.14.1``` or later
+* unzip version ```6.00``` or later
 
 ### Development
 
