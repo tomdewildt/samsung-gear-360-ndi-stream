@@ -1,0 +1,20 @@
+[project]
+name = "linux-stream-poc"
+version = "0.1.0"
+description = "Linux proof-of-concept for the Gear 360 SAP -> WiFi -> NDI pipeline."
+requires-python = ">=3.12"
+dependencies = [
+    "cryptography>=43",
+    "numpy>=2",
+    "ndi-python>=5.1",
+    # Bluetooth (bluez over d-bus). Linux only, needs system glib/bluetooth libs.
+    "dbus-python>=1.3; sys_platform == 'linux'",
+    "PyGObject>=3.48; sys_platform == 'linux'",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/gear360"]
