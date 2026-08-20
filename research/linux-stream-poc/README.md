@@ -5,11 +5,12 @@ Working proof-of-concept for connecting the Gear 360 to a Linux machine and stre
 # How To Run
 
 Prerequisites:
-* mise version ```[TODO]``` or later
+* mise version ```2026.8.10``` or later
 * uv version ```0.10.5``` or later
 * python version ```3.12.0``` or later
-* ffmpeg version ```[TODO]``` or later (provides ffplay)
+* ffmpeg version ```7.1.5``` or later (provides ffplay)
 * Linux with BlueZ + NetworkManager (```nmcli```)
+* System build headers so `uv` can compile `dbus-python` and `PyGObject` from source: ```python3-dev libdbus-1-dev libglib2.0-dev libgirepository-2.0-dev libcairo2-dev pkg-config```
 
 ### Development
 
