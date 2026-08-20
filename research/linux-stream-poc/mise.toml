@@ -6,13 +6,14 @@ uv = "0.10.5"
 description = "Initialize the environment"
 run = "uv sync"
 
+# These need sudo for bluetooth access, uv is a per-user install, so we call the venv's python directly.
 [tasks."libpy:start"]
 description = "Run the poc with the python library"
-run = "sudo uv run python -m gear360.connect_libpy"
+run = "sudo .venv/bin/python -m gear360.connect_libpy"
 
 [tasks."libwsm:start"]
 description = "Run the poc with the wsm library"
-run = "sudo uv run python -m gear360.connect_libwsm"
+run = "sudo .venv/bin/python -m gear360.connect_libwsm"
 
 [tasks."ndi:camera:start"]
 description = "Run the ndi camera stream server"

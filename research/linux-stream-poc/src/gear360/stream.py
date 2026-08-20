@@ -150,10 +150,14 @@ def iter_video_frames(response: http.client.HTTPResponse) -> Iterator[bytes]:
 
 
 def read_exact_bytes(source: IO[bytes], size: int) -> bytes | None:
-    """Read exactly `size` bytes from a binary stream, or return None on EOF."""
+    """Read exactly `size` bytes from a binary stream, or return None on EOF. A socket read timeout (the camera
+    stopping the stream) is treated as EOF so consumers end cleanly instead of crashing."""
     data = b""
     while len(data) < size:
-        chunk = source.read(size - len(data))
+        try:
+            chunk = source.read(size - len(data))
+        except TimeoutError:
+            return None
         if not chunk:
             return None
         data += chunk
