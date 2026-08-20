@@ -5,10 +5,10 @@ Reverse-engineers Samsung's native `libwsm.so` (32-bit ARM, extracted from the A
 # How To Run
 
 Prerequisites:
-* make version ```[TODO]``` or later
-* curl version ```[TODO]``` or later
-* tar version ```[TODO]``` or later
-* qemu-arm-static version ```[TODO]``` or later (to run the ARM binaries)
+* make version ```4.4.1``` or later
+* curl version ```8.14.1``` or later
+* tar version ```1.35``` or later
+* qemu-arm-static version ```10.0.11``` or later (to run the ARM binaries)
 
 ### Development
 
@@ -22,7 +22,12 @@ The ARM binaries link against the decompiled ```libwsm.so``` — produce it firs
 
 3. Run ```make clean``` to remove build output.
 
-Linker warnings about `liblog.so` / `libdl.so` are expected. They resolve at runtime under qemu. The dynamic-linker and rpath are baked into each binary as absolute paths, so **rebuild if you move `libwsm-reveng/` or `apk-reveng/`**.
+`make build` also writes two things next to `libwsm.so` so it can run under qemu and musl:
+
+- Stub `liblog.so` and `libstdc++.so` (from `src/stub_libs.c`). These are Android libraries musl doesn't have. `libm`, `libdl` and `libc` come from musl, so linker warnings about those are fine.
+- A patch to `libwsm.so` that zeros `DT_INIT_ARRAYSZ` and `DT_FINI_ARRAYSZ`. This skips an Android C++ constructor that crashes under musl. The crypto doesn't use it.
+
+The dynamic-linker and rpath are baked into each binary as absolute paths, so rebuild if you move `libwsm-reveng/` or `apk-reveng/`.
 
 ### Regenerating nonce table
 
