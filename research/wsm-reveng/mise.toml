@@ -1,0 +1,11 @@
+[tools]
+python = "3.12"
+uv = "0.10.5"
+
+[tasks.init]
+description = "Initialize the environment"
+run = "uv sync"
+
+[tasks.test]
+description = "Run tests"
+run = "uv run python scripts/parity_test.py"
