@@ -1,0 +1,25 @@
+[tools]
+rust = "1.97"
+
+[tasks.init]
+description = "Initialize the environment"
+run = "cargo fetch"
+
+[tasks.start]
+description = "Run the app (the camera must be paired)"
+run = [
+    "bash scripts/bundle.sh",
+    "./macos-bluetooth-poc.app/Contents/MacOS/macos-bluetooth-poc",
+]
+
+[tasks.build]
+description = "Build binary"
+run = "cargo build --release"
+
+[tasks.lint]
+description = "Run lint check"
+run = "cargo clippy --all-targets --all-features -- -D warnings"
+
+[tasks.format]
+description = "Run format check"
+run = "cargo fmt --all"
