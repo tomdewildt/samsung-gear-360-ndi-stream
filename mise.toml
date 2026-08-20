@@ -1,0 +1,26 @@
+[tools]
+rust = "1.97"
+
+[tasks.init]
+description = "Initialize the environment"
+run = "cargo fetch"
+
+[tasks.start]
+description = "Run the app"
+run = "cargo run"
+
+[tasks.build]
+description = "Build a release binary"
+run = "cargo build --release"
+
+[tasks.lint]
+description = "Run lint check"
+run = "cargo clippy --all-targets --all-features -- -D warnings"
+
+[tasks.format]
+description = "Run format check"
+run = "cargo fmt --all"
+
+[tasks.test]
+description = "Run tests"
+run = "cargo test"
