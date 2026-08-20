@@ -17,10 +17,10 @@ The Bluetooth protocol was reverse-engineered from the Gear 360 Manager Android 
 # How To Run
 
 Prerequisites:
-* mise version ```[TODO]``` or later
+* mise version ```2026.8.10``` or later
 * rust version ```1.97.0``` or later
-* ffmpeg version ```[TODO]``` or later (for HEVC decoding)
-* [NDI SDK](https://ndi.video/for-developers/ndi-sdk/) version ```[TODO]``` or later (for NDI output)
+* ffmpeg version ```7.1.5``` or later (for HEVC decoding)
+* [NDI SDK](https://ndi.video/for-developers/ndi-sdk/) version ```6.3.2``` or later (for NDI output)
 
 ### Development
 

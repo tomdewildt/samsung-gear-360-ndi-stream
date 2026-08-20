@@ -5,7 +5,7 @@ Reimplementation of Samsung's WSM authentication algorithm in pure Python. No `l
 # How To Run
 
 Prerequisites:
-* mise version ```[TODO]``` or later
+* mise version ```2026.8.10``` or later
 * uv version ```0.10.5``` or later
 * python version ```3.12.0``` or later
 
