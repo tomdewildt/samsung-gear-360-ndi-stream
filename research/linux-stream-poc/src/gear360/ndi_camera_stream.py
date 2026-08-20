@@ -150,18 +150,25 @@ def bridge_url_to_ndi(
         parsed_url.port,
         timeout=30,
     )
-    connection.request(
-        "GET",
-        parsed_url.path,
-        headers={
-            "User-Agent": "Android Linux",
-            "Host": f"{parsed_url.hostname}:{parsed_url.port}",
-            "Connection": "Keep-Alive",
-        },
-    )
-    response = connection.getresponse()
+    try:
+        connection.request(
+            "GET",
+            parsed_url.path,
+            headers={
+                "User-Agent": "Android Linux",
+                "Host": f"{parsed_url.hostname}:{parsed_url.port}",
+                "Connection": "Keep-Alive",
+            },
+        )
+        response = connection.getresponse()
+    except (TimeoutError, OSError) as error:
+        log.error(f"Could not open stream at {url}: {error}")
+        log.hint("Make sure you're on the camera's WiFi and it's in liveview mode.")
+        connection.close()
+        return
     if response.status not in (200, 206):
         log.error(f"HTTP {response.status} — stream not available")
+        connection.close()
         return
     log.step(f"HTTP {response.status}")
 
